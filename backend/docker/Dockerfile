@@ -1,4 +1,4 @@
-FROM golang:1.23.0-alpine
+FROM golang:1.24.6-alpine
 
 ENV CGO_ENABLED=0 \
     GO111MODULE=on \
@@ -6,9 +6,11 @@ ENV CGO_ENABLED=0 \
 
 RUN apk add --no-cache bash git
 
+RUN go install github.com/air-verse/air@latest
+
 WORKDIR /app
 
-COPY go.mod go.sum ./
+COPY go.mod ./
 RUN go mod download
 
 COPY . .
