@@ -1,9 +1,13 @@
 #!/bin/bash
 set -e
 
-echo "[ENTRYPOINT] Starting ava-sesisenai Go app..."
+echo "[ENTRYPOINT] Dev mode: watching for file changes..."
 
-go build -o ava-api ./cmd/api
+# Ensure go.sum exists, or fetch deps
+if [ ! -f go.sum ]; then
+  echo "[ENTRYPOINT] go.sum not found. Running 'go mod tidy'..."
+  go mod tidy
+fi
 
-exec ./ava-api
-
+# Run Air for live-reload
+exec air
