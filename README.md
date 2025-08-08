@@ -40,7 +40,7 @@ A proposta do sistema é promover **engajamento estudantil**, **organização pe
 
 ### Pré-requisitos
 
-- Docker e Docker Compose instalados
+- Docker ou Docker Compose instalados
 - Git
 
 ### 🪟 Windows WSL (Windows Subsystem for Linux)
