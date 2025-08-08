@@ -2,7 +2,8 @@ FROM golang:1.24.6-alpine
 
 ENV CGO_ENABLED=0 \
     GO111MODULE=on \
-    GOPROXY=https://proxy.golang.org,direct
+    GOPROXY=https://proxy.golang.org,direct \
+    PATH="/go/bin:$PATH"          
 
 RUN apk add --no-cache bash git
 

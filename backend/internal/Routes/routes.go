@@ -1,16 +1,21 @@
 package Routes
 
 import (
-	rolesController "ava-sesisenai/backend/internal/Controller"
+	"net/http"
+
+	"ava-sesisenai/backend/internal/Container"
 
 	"github.com/gin-gonic/gin"
 )
 
-func Routes(r *gin.Engine) {
-	r.GET("/health", func(c *gin.Context) {
-		c.JSON(200, gin.H{
-			"status": "Health status OK",
-		})
+func Register(r *gin.Engine, c *Container.Container) {
+	r.GET("/health", func(ctx *gin.Context) {
+		ctx.JSON(http.StatusOK, gin.H{"status": "Health status OK"})
 	})
-	r.GET("/roles", rolesController.GetAllRoles)
+
+	api := r.Group("/api")
+	{
+		api.GET("/roles", c.RolesCtl.List)
+		api.GET("/roles/:id", c.RolesCtl.Show)
+	}
 }
