@@ -1,6 +1,8 @@
 package Routes
 
 import (
+	rolesController "ava-sesisenai/backend/internal/Controller"
+
 	"github.com/gin-gonic/gin"
 )
 
@@ -10,4 +12,5 @@ func Routes(r *gin.Engine) {
 			"status": "Health status OK",
 		})
 	})
+	r.GET("/roles", rolesController.GetAllRoles)
 }

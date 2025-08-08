@@ -45,7 +45,6 @@ services:
       context: ./backend
       dockerfile: docker/Dockerfile
     container_name: main-backend
-    restart: always
     environment:
       - NODE_ENV=production
       - PORT=3000
